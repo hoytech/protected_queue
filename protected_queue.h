@@ -13,6 +13,7 @@ Simple thread-safe queue for C++11
 #include <deque>
 #include <condition_variable>
 #include <thread>
+#include <vector>
 
 
 namespace hoytech {
