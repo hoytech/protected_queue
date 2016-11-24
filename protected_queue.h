@@ -108,6 +108,17 @@ class protected_queue {
         return std::move(temp_queue);
     }
 
+    std::deque<T> pop_all_no_wait() {
+        decltype(q_) temp_queue;
+
+        {
+            std::unique_lock<decltype(mutex_)> lock(mutex_);
+            temp_queue.swap(q_);
+        }
+
+        return std::move(temp_queue);
+    }
+
     std::deque<T> pop_all_nonblocking() {
         decltype(q_) temp_queue;
 
